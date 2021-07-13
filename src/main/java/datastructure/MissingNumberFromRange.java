@@ -5,13 +5,19 @@ import org.junit.Test;
 
 public class MissingNumberFromRange {
 	
-	/*1. Did I understand the problem? Yes
+	/*Given an array nums containing n distinct numbers in the range [0, n], return the only number 
+	 * in the range that is missing from the array.
+
+		Input: nums = [3,0,1]
+		Output: 2
+	 *  
+	 * 1. Did I understand the problem? Yes
 			   
 		     If no ask the person to provide with more details with examples
 		     If yes go to the next step
 		     
-		     What is the input(s)? ---> int[],int[] 
-		     What is the expected output? --->int (missing number)
+		     What is the input(s)? ---> int[] 
+		     What is the expected output? --->int 
 		     Do I have constraints to solve the problem? ---> no constraints
 		     Do I have all the information to go to the next steps? --->yes
 		     How big your test data set will be? --->
@@ -54,7 +60,7 @@ public class MissingNumberFromRange {
 
 	@Test
 	public void test3(){
-		int[] input={0,0,0};
+		int[] input={3,3};
 		Assert.assertEquals(-1,missingNumberInRange(input));
 	}
 

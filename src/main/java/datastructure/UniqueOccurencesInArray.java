@@ -1,5 +1,7 @@
 package datastructure;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,12 +14,19 @@ import org.junit.Test;
 public class UniqueOccurencesInArray {
 	
 	
-	/*1. Did I understand the problem? Yes
+	/*Given an array of integers arr, write a function that returns true if and only if
+	  the number of occurrences of each value in the array is unique.
+ 
+		Example 1:
+			Input: arr = [1,2,2,1,1,3]
+			Output: true
+
+	 * 1. Did I understand the problem? Yes
 	   
     If no ask the person to provide with more details with examples
     If yes go to the next step
     
-    What is the input(s)? ---> int[],int[]
+    What is the input(s)? ---> int[]
     What is the expected output? --->int (missing number)
     Do I have constraints to solve the problem? ---> no constraints
     Do I have all the information to go to the next steps? --->yes
@@ -49,20 +58,71 @@ public class UniqueOccurencesInArray {
 	@Test
 	public void test1(){
 		int [] input={2,5,2,5,2,1};
-		Assert.assertEquals(true,uniqueOccurencesInArray(input));
+		//Assert.assertEquals(true,uniqueOccurencesInArray(input));
+		Assert.assertEquals(true,uniqueOccurencesInArrayUsingNestedLoop(input));
 		
 	}
 	
 	@Test
 	public void test2(){
 		int [] input={1,2,2,3,3,3,1};
-		Assert.assertEquals(false,uniqueOccurencesInArray(input));
+		//Assert.assertEquals(false,uniqueOccurencesInArray(input));
+		Assert.assertEquals(true,uniqueOccurencesInArrayUsingNestedLoop(input));
 	}
 	
 	@Test
 	public void test3(){
 		int [] input={};
-		Assert.assertEquals(false,uniqueOccurencesInArray(input));
+		//Assert.assertEquals(false,uniqueOccurencesInArray(input));
+		Assert.assertEquals(true,uniqueOccurencesInArrayUsingNestedLoop(input));
+	}
+	
+	
+	/*
+	 * 1.Sort the array using sort method
+	 * 2.traverse through the sorted array
+	 * 3.compare current element with every other element with another loop
+	 * 		a.if it matches increement the count
+	 * 		b.if not continue the loop
+	 * 4.add the counter to list at the end of inner loop
+	 * 5.traverse through the list
+	 * 6.compare each element with other element
+	 * 		a.if the counter is unique return true
+	 * 		b.if not return false
+	 */
+	
+	private boolean uniqueOccurencesInArrayUsingNestedLoop(int[] input) {
+		Arrays.sort(input);
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		System.out.println(Arrays.toString(input));
+		outer :for (int i = 0; i < input.length; ) {
+			int count=0;
+			for (int j = 0; j < input.length; j++) {
+				if(input[i]==input[j]){
+					count++;
+					
+				}
+				if(input[j]>input[i]){
+					i=j;
+					break;
+				}else{
+					break;
+				}
+				
+				
+			}
+			list.add(count);
+			
+		}
+		System.out.println(list);
+		for (int i = 0; i < list.size(); i++) {
+			if(list.subList(i+1, list.size()).contains(i)){
+				return false;
+			}
+			
+		}
+		return true;
+		
 	}
 	
 	/*
