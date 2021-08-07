@@ -47,21 +47,20 @@ public class IntersectingElementsInArray {
 	@Test
 	public void test1(){
 		int[] nums1 = {1,2,2,1,3,7}, nums2 = {2,2,3,1,5,7};
-		Assert.assertEquals(Arrays.toString(new int[] {1,2,3,7}), Arrays.toString(intersectingElementsInArray2(nums1,nums2)));
+		Assert.assertArrayEquals(intersectingElementsInArray2(nums1,nums2),new int[] {1,2,2,3,7});
 
 	}
 
-	//@Test
+	@Test
 	public void test2(){
 		int[] nums1 = {1,3,3,4}, nums2 = {5,6,7,10};
-		Assert.assertEquals(Arrays.toString(new int[] {}), Arrays.toString(intersectingElementsInArray2(nums1,nums2)));
-
+		Assert.assertArrayEquals(intersectingElementsInArray2(nums1,nums2),new int[] {});
 	}
 
-	//@Test
+	@Test
 	public void test3(){
-		int[] nums1 = {1,2,2,1}, nums2 = {1,2,2,1};
-		Assert.assertEquals(Arrays.toString(new int[] {1,2}), Arrays.toString(intersectingElementsInArray2(nums1,nums2)));
+		int[] nums1 = {1,2,2,1,4,2}, nums2 = {1,2,2,1,2};
+		Assert.assertArrayEquals(intersectingElementsInArray2(nums1,nums2),new int[] {1,1,2,2,2});
 
 	}
 
@@ -101,28 +100,50 @@ public class IntersectingElementsInArray {
 	 * Space Complexity:O(1)
 	 */
 
+	//{1,2,2,1,3,7}, nums2 = {2,2,3,1,5,7};
+	/*{1,1,2,2,3,7}  {1,2,2,3,5,7}
+	 * 
+	 * 
+	 * 1.Sort the array
+	 * 2.Assign index1 to start index of first array index2 to start index of second array
+	 * 3.if index1==index2 -->add to new array and increment index2 and index1
+	 * 4.if index1>index2 -->index2++
+	 * 5.if index1 <index2 -->index1++
+	 * 
+	 */
+	
+	
 	private int[] intersectingElementsInArray2(int[] nums1, int[] nums2) {
 
 		Arrays.sort(nums1);
 		Arrays.sort(nums2);
-		System.out.println(nums1.length);
-		System.out.println(nums2.length);
+		//System.out.println(nums1.length);
+		//System.out.println(nums2.length);
 		//System.out.println(Arrays.toString(nums1));
 		//System.out.println(Arrays.toString(nums2));
-		int maxSize=nums1.length > nums2.length ? nums1.length :nums2.length;
+		
 		int minSize=nums1.length > nums2.length ? nums2.length :nums1.length;
-		int [] output=new int[maxSize];
+		int [] output=new int[minSize];
 		int leftNum1=0;int leftNum2=0,j=0;
 		while(leftNum1<nums1.length && leftNum2<nums2.length){
 			if(nums1[leftNum1]==nums2[leftNum2]){
 				output[j++]=nums1[leftNum1];
+				leftNum1++;
+				leftNum2++;
+			}else if(nums1[leftNum1]>nums2[leftNum2]){
 				leftNum2++;
 			}else{
 				leftNum1++;
 			}
+			
 		}
+		
+		
+		
 		System.out.println(Arrays.toString(output));
 		return output;
 
 	}
+	
+	
 }

@@ -36,14 +36,14 @@ public class PeakElement {
 	9. Test against different test data
 	10. If it fails then debug to solve it
 */
-	@Test
+	//@Test
 	public void test1() throws Exception{
 		int input[]={10,5,7,12,5,8};
 		//System.out.println(peakElementUsingNestedLoops(input));
 		System.out.println(peakElementUsingSinglePass(input));
 	}
 
-	@Test
+	//@Test
 	public void test2() throws Exception{
 		int input[]={-1,-5,-7,-8,-5,-8};
 		//System.out.println(peakElementUsingNestedLoops(input));
@@ -51,10 +51,10 @@ public class PeakElement {
 
 	}
 
-	//@Test
+	@Test
 	public void test3() throws Exception{
-		int input[]={};
-		peakElementUsingNestedLoops(input);
+		int input[]={1,2,3,6,4};
+		findPeakElement(input);
 	}
 
 	/*
@@ -122,4 +122,20 @@ public class PeakElement {
 	 * Space Complexity - O(1)
 	 * 
 	 */
+	
+	public int findPeakElement(int[] nums) {
+	     int start = 0, end = nums.length-1;
+	     
+	     while(start < end)
+	     {
+	         int mid = (start + end)/2;
+	         
+	         if(nums[mid] < nums[mid + 1])
+	             start = mid+1;
+	         else
+	             end = mid;
+	     }
+	     
+	     return end;
+	 }
 }
