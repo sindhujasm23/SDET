@@ -57,31 +57,48 @@ public class ColorSort {
 	@Test
 	public void test1(){
 		int num[]={2,0,1,1,0};
-		System.out.println(Arrays.toString(colorSort(num)));
+		//System.out.println(Arrays.toString(colorSort(num)));
+		System.out.println(Arrays.toString(findColorSort(num)));
 	}
+	@Test
+	public void test2(){
+		int num[]={2,0,1};
+		//System.out.println(Arrays.toString(colorSort(num)));
+		System.out.println(Arrays.toString(findColorSort(num)));
+	}
+	@Test
+	public void test3(){
+		int num[]={0};
+		//System.out.println(Arrays.toString(colorSort(num)));
+		System.out.println(Arrays.toString(findColorSort(num)));
+	}
+		
+	
 
-	private int[] colorSort(int[] num) {
+	private int[] findColorSort(int[] num) {
 		// TODO Auto-generated method stub
-
-		int low=0,mid=0,high=num.length-1;
-		int temp;
+		int low=0,high=num.length-1,mid=0,temp=0;
 		while(mid<=high){
+			
 			if(num[mid]==0){
 				temp=num[mid];
 				num[mid++]=num[low];
-				num[low++]=temp;
-
+				num[low++]=temp;				
 			}else if(num[mid]==1){
 				mid++;
 			}else{
-				temp=num[high];
-				num[high--]=num[mid];
-				num[mid]=temp;
+				temp=num[mid];
+				num[mid]=num[high];
+				num[high--]=temp;
 			}
 		}
+		//	System.out.println(Arrays.toString(num));
+		
 		return num;
-
 	}
+
+
+
 
 
 }
