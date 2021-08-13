@@ -5,9 +5,13 @@ This repository contains my Java implementations of Data Structures and solution
 Below Data structures are used in this repo.
 
 ✔ Array
+
 ✔ Linked List
+
 ✔ Stack
+
 ✔ Queue
+
 ✔ Hash Map
 
 
