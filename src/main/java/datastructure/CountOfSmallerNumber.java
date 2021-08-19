@@ -43,5 +43,5 @@ public class CountOfSmallerNumber {
 	10. If it fails then debug to solve it
 		
 	 */
-
+	
 }
