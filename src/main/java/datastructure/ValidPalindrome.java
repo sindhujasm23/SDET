@@ -1,5 +1,7 @@
 package datastructure;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -60,14 +62,14 @@ public class ValidPalindrome {
 
 	@Test
 	public void test1(){
-		String s = "aba";
+		String s = "A man, a plan, a canal: Panama";
 		Assert.assertEquals(findPalindrome(s),true);
 	}
 
 
 	@Test
 	public void test2(){
-		String s = "deee";
+		String s = "deeed";
 		Assert.assertEquals(findPalindrome(s),true);
 	}
 
@@ -87,6 +89,8 @@ public class ValidPalindrome {
 	 * 
 	 */
 	//abca
+
+
 	private boolean findPalindrome(String s) {
 		// TODO Auto-generated method stub
 		int left=0,right=s.length()-1;
@@ -116,6 +120,10 @@ public class ValidPalindrome {
 			right--;
 
 		}
+		StringBuilder str=new StringBuilder();
+		str.insert(0, 'c');
+		str.toString().equalsIgnoreCase("");
+
 		return true;
 	}
 
