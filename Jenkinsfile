@@ -55,6 +55,9 @@ pipeline {
     }
 
     stage('UAT cert') {
+      when {
+        branch 'master'
+      }
       steps {
         input 'Do you want to certify?'
       }
